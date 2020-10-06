@@ -20,7 +20,7 @@ public class Vista {
   * Método para mostrar el menú para generar perfil y seleccionar una opción.
    * @param n/a
    * @return Número de opción del menú ingresado por el usuario.
-   * @author Alejandro y Pao
+   * @author Alejandro y Paola
   */
   public int SubMenu () {
     int opc = 1;
@@ -80,28 +80,37 @@ public class Vista {
 
   /**
   *Mensaje de Bienvenida a Programa
-  * @author Marco Jurado
+  * @author Ale
    */
    public void MensajeBienvenida(){
      System.out.println( "Bienvenido a Samaj-20 " +
      "\nEmpleo fácil, rápido y seguro");
    }
 
-  /**
-  Método para preguntar existencia de usuario en red de Samaj
-   */
+  /** Metodo para preguntar el usuario
+   * dentro de Samaj 20 */
+
    public String PreguntarUsuario(){
      String ingreso = scan.nextLine();
      
    }
 
-    // Métodos que se utilizan para crear un perfil de trabajadorFormal.
-  
-  /**
-  *Mensaje de Bienvenida a Programa
-  * @author Ale 
-   */
+   /** Metodo para preguntar el directorio
+    * en el cual se almacenara el
+    archivo csv de Samaj 2020 */
 
+    public String DirectorioCSV(){
+      String csv = scan.nextLine();
+      
+    }
+
+  /* Métodos utilizados para la creacion
+  de un perfil de Trabajador Formal. */
+  
+  // Metodo que valida cualquier entry de tipo entero o numerico 
+  public int validarInput(int[] intInputs, String[] stringInputs){
+    
+  }
    public String ingresarNombre(){
      System.out.println("Ingrese su nombre: ");
      String nombre = scan.nextLine();
@@ -132,16 +141,24 @@ public class Vista {
 
     public boolean ingresarExperienciaLaboral(){
       System.out.println("Experiencia laboral (SI/NO): ");
-      String opc = scan.nextLine();
+      opc = scan.nextLine();
+      opc = opc.toLowerCase();
       boolean expLab;
-      if(opc.equals("SI") || opc.equals("Si") || opc.equals("si") || opc.equals("sI")){
+      if(opc.equals("si")){
         expLab = true;
-      }else if(opc.equals("NO") || opc.equals("No") || opc.equals("no") || opc.equals("nO")){
+      }else if(opc.equals("no")){
         expLab = false;
       }
       return expLab;
     }
 
-    public 
-    
+    public int ingresarIdioma(){
+      System.out.println("Ingrese el idioma de su dominio que desea mostrar en su perfil.");
+      System.out.println("1. Español \n 2.Ingles \n 3.Aleman \n 4.Frances \n 5. Mandarín\n 6. Portugues\n 7. Otros");
+      int idiom = scan.nextInt();
+      scan.nextLine();
+      return idiom;
+    }   
+
+
 
