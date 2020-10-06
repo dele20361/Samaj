@@ -14,25 +14,24 @@ public class EmpleadorFormal extends usuarioSamaj {
     /**
      * Constructor de clase EmpleadorFormal.
      * @param user Usario existente de Empleador
-     * @param 
-     * @author
+     * @author Paola De León
     */
-    public Empleador( usuarioSamaj user) {
+    public EmpleadorFormal( usuarioSamaj user) {
       super( user.getNombre(), user.getApellido(), user.getCorreo(), user.getTelefono(), user.getCodigo() );
     }
 
     /**
      * Método para mostrar la información de un empleador.
      * @return String En el que se mostrará la información.
-     * @author
+     * @author Paola De León
     */
-    public String toString( EstudianteFormal a ) {
+    public String toString() {
       Boolean IsFormal = a.getFormal ();
       String mensaje = "";
       mensaje +=  "Informacion del empleador formal: ";
-      mensaje += "- Nombre: " + a.getNombre ();
-      mensaje += "- Codigo: " + a.getCodigo ();
-      mensaje += "- Contacto: " + a.getContacto ();
+      mensaje += "- Nombre: " + this.Nombre;
+      mensaje += "- Codigo: " + this.Codigo;
+      mensaje += "- Contacto: " + this.Contacto;
     
       return mensaje;
 
