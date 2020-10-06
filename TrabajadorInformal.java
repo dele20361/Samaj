@@ -8,19 +8,15 @@ Clase que trabaja con el perfil del trabajador informal
 Samaj-20
 *****************/
 
-public class TrabajadorInformal extends usarioSamaj {
+public class TrabajadorInformal extends usuarioSamaj {
 
   //Variables de instancia
   private String AreaConocimiento;
   
   //Constructor
-  public TrabajadorInformal (  ) {
-
-    this.CodigoID = initCodigoID;
-    this.Nombre = initNombre;
-    this.Apellido = initApellido;
-    this.AreaConocimiento = initAreaConocimiento;
-    this.Telefono = initTelefono;
+  public TrabajadorInformal ( usuarioSamaj user, String Area ) {
+    super( user.getNombre(), user.getApellido(), user.getCorreo(), user.getTelefono(), user.getCodigo() );
+    this.AreaConocimiento = Area;
   }
 
   // Getters
