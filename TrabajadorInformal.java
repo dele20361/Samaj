@@ -23,7 +23,7 @@ public class TrabajadorInformal extends usuarioSamaj {
   public String getAreaConocimiento () { return AreaConocimiento; }
 
   // Setters
-  public String setAreaConocimiento ( String a ) { AreaConocimiento =  a; return AreaConocimiento; }
+  public setAreaConocimiento ( String a ) { AreaConocimiento =  a; }
 
   /**
    * Método para mostrar la infromación de un trabajador informal.
@@ -31,23 +31,11 @@ public class TrabajadorInformal extends usuarioSamaj {
    * @return String Con la info del trabajador.
    * @author 
   */
-  public String toString( TrabajadorInformal a ) {
+  public String toString() {
     String result = "";
-    result = "\n Codigo ID:" + a.getCodigoID() + "\n Nombre: " + a.getNombre() + "\n Apellido: " + a.getApellido() + "\n Areadeconocimiento" + a.getAreaConocimiento() + "\n Telefono:" + a.getTelefono();
+    result = "\n Codigo ID:" + this.Codigo + "\n Nombre: " + this.Nombre + "\n Apellido: " + this.Apellido + "\n Areadeconocimiento" + this.AreaConocimiento + "\n Telefono:" + this.Telefono;
     
     return result;
   }
-
-  /**
-   * Método para agregar un perfil de trabajador informal al ArrayList general.
-   * @param TI Trabajador informal por agregar.
-   * @return void
-   * @author 
-   */
-  public void SubirPerfil ( TrabajadorInformal TI ) {
-  //Tipo Función
-    Documentos.AddTrabajadorInformal(TI);
-  } 
-
 
 }
