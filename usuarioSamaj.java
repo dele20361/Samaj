@@ -14,13 +14,12 @@ public class usuarioSamaj {
     protected int Telefono, Codigo, Contacto;
 
     // Constructor
-    public usuarioSamaj( String Nombre, String Apellido, String Correo, int Telefono, int Codigo, int Contacto ) {
+    public usuarioSamaj( String Nombre, String Apellido, String Correo, int Telefono, int Codigo ) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.Correo = Corre;
         this.Telefono = Telefono;
         this.Codigo = Codigo;
-        this.Contacto = Contacto;
     }
 
     // Getters 
@@ -29,7 +28,6 @@ public class usuarioSamaj {
     public String getCorreo() { return Correo; }
     public int getTelefono() { return Telefono; }
     public int getCodigo() { return Codigo; }
-    public int getContacto() { return Contacto; }
 
 
     // Setters 
@@ -38,7 +36,6 @@ public class usuarioSamaj {
     public void setCorreo( String a ) { Correo = a; } 
     public void setTelefono( int  a ) { Telefono = a; }
     public void setCodigo( int a ) { Codigo = a; }
-    public void setContacto( int a ) { Contacto = a; }
 
     /**
      * Override toString
