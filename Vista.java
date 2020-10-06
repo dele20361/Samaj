@@ -20,7 +20,7 @@ public class Vista {
   * Método para mostrar el menú para generar perfil y seleccionar una opción.
    * @param n/a
    * @return Número de opción del menú ingresado por el usuario.
-   * @author Alecraft y Pao
+   * @author Alejandro y Pao
   */
   public int SubMenu () {
     int opc = 1;
@@ -101,6 +101,7 @@ public class Vista {
   *Mensaje de Bienvenida a Programa
   * @author Ale 
    */
+
    public String ingresarNombre(){
      System.out.println("Ingrese su nombre: ");
      String nombre = scan.nextLine();
@@ -110,28 +111,28 @@ public class Vista {
 
    public String ingresarApellido(){
      System.out.println("Ingrese su apellido: ");
-     String appellido = scan.nextLine();
-     return s;
+     String apellido = scan.nextLine();
+     return apellido;
    }
 
 
    public int ingresarEdad(){
      System.out.println("Ingrese su edad: ");
-     int i = scan.nextInt();
-     return i;
+     int iEdad = scan.nextInt();
+     return iEdad;
    }
 
 
     public int ingresarEducacion(){
       System.out.println("Ingrese su nivel de educacion");
       System.out.println("1. Primaria \n 2. Secundaria \n 3. Universitaria \n 4. 4. Posgrado");
-      int i = scan.nextInt();
-      return i;
+      int iEdu = scan.nextInt();
+      return iEdu;
     }
 
     public boolean ingresarExperienciaLaboral(){
       System.out.println("Experiencia laboral (SI/NO): ");
-      opc = scan.nextLine();
+      String opc = scan.nextLine();
       boolean expLab;
       if(opc.equals("SI") || opc.equals("Si") || opc.equals("si") || opc.equals("sI")){
         expLab = true;
@@ -141,62 +142,6 @@ public class Vista {
       return expLab;
     }
 
-    public int ingresarIdioma(){
-      System.out.println("Ingrese el idioma de su dominio que desea mostrar en su perfil.");
-      System.out.println("1. Español \n 2.Ingles \n 3.Aleman \n 4.Frances \n 5. Mandarín\n 6. Portugues\n 7. Otros");
+    public 
+    
 
-    }
-     return i;
-   }
-
-
-    public int ingresarEducacion(){
-      System.out.println("Ingrese su nivel de educacion");
-      System.out.println("1. Primaria \n 2. Secundaria \n 3. Universitaria \n 4. 4. Posgrado");
-      int i = scan.nextInt();
-      return i;
-    }
-
-    public boolean ingresarExperienciaLaboral(){
-      System.out.println("Experiencia laboral (SI/NO): ");
-      opc = scan.nextLine();
-      boolean expLab;
-      if(opc.equals("SI") || opc.equals("Si") || opc.equals("si") || opc.equals("sI")){
-        expLab = true;
-      }else if(opc.equals("NO") || opc.equals("No") || opc.equals("no") || opc.equals("nO")){
-        expLab = false;
-      }
-      return expLab;
-    }
-
-    public int ingresarIdioma(){
-      System.out.println("Ingrese el idioma de su dominio que desea mostrar en su perfil.");
-      System.out.println("1. Español \n 2.Ingles \n 3.Aleman \n 4.Frances \n 5. Mandarín\n 6. Portugues\n 7. Otros");
-      String idioma = scan.nextLine();
-
-    }
-     return idioma;
-   }
-
-
-    public int ingresarEducacion(){
-      System.out.println("Ingrese su nivel de educacion");
-      System.out.println("1. Primaria \n 2. Secundaria \n 3. Universitaria \n 4. 4. Posgrado");
-      int ed = scan.nextInt();
-      return ed;
-    }
-
- 
-    public boolean ingresarExperienciaLaboral(){
-      System.out.println("Experiencia laboral (SI/NO): ");
-      int opc = scan.nextLine();
-      boolean expLab;
-      if(opc.equals("SI") || opc.equals("Si") || opc.equals("si") || opc.equals("sI")){
-        expLab = true;
-      }else if(opc.equals("NO") || opc.equals("No") || opc.equals("no") || opc.equals("nO")){
-        expLab = false;
-      }
-      return expLab;
-    }
-
-  
