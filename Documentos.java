@@ -16,102 +16,106 @@ public class Documentos {
 	//Propiedades de clase
 	public static ArrayList<TrabajadorFormal> BaseTF; // ArrayList de trabajadores formales
 	public static ArrayList<TrabajadorInformal> BaseTT; // ArrayList de trabajadores informales
-	public static ArrayList<Empleador> BaseEF; // ArrayList de trabajos formales
-  public static ArrayList<Empleador> BaseET; // ArrayList de trabajos temporales
+	public static ArrayList<EmpleadorFormal> BaseEF; // ArrayList de empleadores formales.
+  public static ArrayList<EmpleadorTemporal> BaseET; // ArrayList de empleadores informales
+  public static ArrayList<usuarioSamaj> Usuarios; // ArrayList de usarios de Samaj
 	
 	// Constructor que instancia las listas en las que se almacenará la infromación.
   public Documentos ( ) {
     BaseTF = new ArrayList<TrabajadorFormal>();
     BaseTT = new ArrayList<TrabajadorInformal>();
-    BaseEF = new ArrayList<Empleador>();
-    BaseET = new ArrayList<Empleador>();
+    BaseEF = new ArrayList<EmpleadorFormal>();
+    BaseET = new ArrayList<EmpleadorTemporal>();
+    Usuarios = new ArrayList<usuarioSamaj>();
   }
 
   // Getters
-  public static ArrayList<Empleador> getET ( ) { return BaseET; }
-  public static ArrayList<Empleador> getEF ( ) { return BaseEF; }
+  public static ArrayList<EmpleadorTemporal> getET ( ) { return BaseET; }
+  public static ArrayList<EmpleadorFormal> getEF ( ) { return BaseEF; }
   public static ArrayList<TrabajadorInformal> getTT ( ) { return BaseTT; }
   public static ArrayList<TrabajadorFormal> getTF ( ) { return BaseTF; }
+  public static ArrayList<usuarioSamaj> getUsuarios ( ) { return Usuarios; }
 
   /**
    * Método para buscar un trabajador formal en ArrayList.
    * @param codigo Código el trabajador formal.
-   * @return int Será 0 cuando no se encontró el objeto y 1 si se encontró.
+   * @return boolean Será true si se encontró el objeto en el ArrayList.
    * @author 
    */
-	public int BuscarTrabajadorFormal(int codigo){ 
-    int Cod = 0;
+	public boolean BuscarTrabajadorFormal( int codigo ) { 
+
+    boolean exists = false;
     //Se recorre el listado y se busca el código igual.
 		for ( int i = 0; i< BaseTF.size(); i++ ) {
 			TrabajadorFormal entacuchado = BaseTF.get(i);
 			if (codigo == entacuchado.getCodigo()) {
-				Cod = 1;
+				exists = true;
       } 
       else {}
     }
     
-    return Cod;
+    return exists;
 	}
 
   /** 
    * Método para buscar un trabajador temporal en ArrayList.
    * @param Codigo Código del trabajador temporal.
-   * @return int Será 0 cuando no se encontró el objeto y 1 si se encontró.
+   * @return boolean Será true si se encontró el objeto en el ArrayList.
    */
-	public int BuscarTrabajadorTemporal( int Codigo ) {
+	public boolean BuscarTrabajadorTemporal( int Codigo ) {
 
     //Se recorre el listado y se busca el código igual.
-    int Cod = 0;
+    boolean exists = false;
 		for ( int i = 0; i< BaseTT.size(); i++ ) {
 			TrabajadorInformal TInformal = BaseTT.get ( i );
-			if ( Codigo == TInformal.getCodigoID() ) {
-        Cod = 1;
+			if ( Codigo == TInformal.getCodigo() ) {
+        exists = true;
       }
       else {}
     }
     
-    return Cod;
+    return exists;
 	}
 
 
   /**
    * Método para buscar un Empleador Formal en ArrayList.
    * @param Codigo Código del empleador formal.
-   * @return int Será 0 cuando no se encontró el objeto y 1 si se encontró.
+   * @return boolean Será true si se encontró el objeto en el ArrayList.
    * @author 
    */
-	public int BuscarEmpleadorFormal ( int Codigo ) {
-    int Cod = 0;
+	public boolean BuscarEmpleadorFormal ( int Codigo ) {
+    boolean exists = false;
     //Se recorre el listado y se busca el código igual. 
 		for ( int i = 0; i< BaseEF.size(); i++ ) {
-			Empleador Jefe = BaseEF.get(i);
+			EmpleadorFormal Jefe = BaseEF.get(i);
 			if (Codigo == Jefe.getCodigo()){
-				Cod = 1;
+				exists = true;
       }
       else{}
     }
     
-    return Cod;
+    return exists;
   }
   
 
   /**
    * Método para buscar un Empleador Temporal en ArrayList.
    * @param Codigo Código del empleador temporal.
-   * @return int Será 0 cuando no se encontró el objeto y 1 si se encontró.
+   * @return boolean Será true si se encontró el objeto en el ArrayList.
    * @author 
    */
-	public int BuscarEmpleadorTemporal ( int Codigo ) {
-    int Cod = 0;
+	public boolean BuscarEmpleadorTemporal ( int Codigo ) {
+    boolean exists = false;
 		for ( int i = 0; i< BaseET.size(); i++ ) {
-			Empleador Senito = BaseET.get(i);
+			EmpleadorTemporal Senito = BaseET.get(i);
 			if ( Codigo == Senito.getCodigo() ) {
-				Cod = 1;
+				exists = true;
       } 
       else {}
     }
     
-    return Cod;
+    return exists;
 	}
 	
 
@@ -146,7 +150,7 @@ public class Documentos {
     TrabajadorInformal Worker = null; 
 		for ( int i = 0; i< BaseTT.size(); i++ ) {
 			TrabajadorInformal don = BaseTT.get( i );
-			if ( Codigo == don.getCodigoID() ) {
+			if ( Codigo == don.getCodigo() ) {
 				Worker = don;//Devuelve el objeto si lo encontró
 			}
 		}
@@ -159,13 +163,13 @@ public class Documentos {
    * Método para obtener un empleador del ArrayList.
    * Se debe validar el codigo para usar este método.
    * @param Codigo Código del empleador formal.
-   * @return Empleador Empleador que corresponde al código ingresado.
+   * @return EmpleadorFormal Empleador formal que corresponde al código ingresado.
    * @author 
    */
-	public Empleador ObtenerEF ( int Codigo ) {
-    Empleador Boss = null;
+	public EmpleadorFormal ObtenerEF ( int Codigo ) {
+    EmpleadorFormal Boss = null;
 		for ( int i = 0; i< BaseEF.size(); i++ ) {
-			Empleador Jefe = BaseEF.get(i);
+			EmpleadorFormal Jefe = BaseEF.get(i);
 			if (Codigo == Jefe.getCodigo() ) {
 				Boss = Jefe;
       }
@@ -180,13 +184,13 @@ public class Documentos {
    * Método para devolver el objeto que tenga el mismo código.
    * Se debe validar el codigo para usar este método.
    * @param Codigo Código del empleador temporal.
-   * @return Empleador Empleador que corresponde al código ingresado.
+   * @return EmpleadorTemporal Empleador temporal que corresponde al código ingresado.
    * @author 
    */
-	public Empleador ObtenerET ( int Codigo ) {
-    Empleador Mister = null;
+	public EmpleadorTemporal ObtenerET ( int Codigo ) {
+    EmpleadorTemporal Mister = null;
 		for ( int i = 0; i< BaseET.size(); i++ ) {
-			Empleador Senito = BaseET.get(i);
+			EmpleadorTemporal Senito = BaseET.get(i);
 			if ( Codigo == Senito.getCodigo() ) {
 				Mister = Senito;
 			}
@@ -222,25 +226,25 @@ public class Documentos {
       //For para recorrer la base de datos de trabajadores temporales
       for ( int j = 0; j < BaseTT.size(); j++ ) {
         TrabajadorInformal don = BaseTT.get(j);
-        int numerazo = don.getCodigoID();
+        int numerazo = don.getCodigo();
         if( cod == numerazo ) {
           contador += 1;
         }
       }
       
-      //For que recorre la base de datos de empleador
-      for (int k = 0; k < BaseEF.size(); k++ ) {
-        Empleador Jefe = BaseEF.get(k);
+      //For que recorre la base de datos de empleador formal
+      for ( int k = 0; k < BaseEF.size(); k++ ) {
+        EmpleadorFormal Jefe = BaseEF.get(k);
         int Num = Jefe.getCodigo();
         if ( cod == Num ) {
           contador += 1;
         }
       }
       
-      //For que recorre base de datos de empleador de trabajadores formales
-      for ( int l = 0; l < BaseTF.size(); l++ ) {
-        TrabajadorFormal entacuchado = BaseTF.get(l);
-        int numerito = entacuchado.getCodigo();
+      //For que recorre base de datos de empleador de empleador temporales.
+      for ( int l = 0; l < BaseET.size(); l++ ) {
+        EmpleadorTemporal Senito = BaseET.get(l);
+        int numerito = Senito.getCodigo();
         if ( cod == numerito ) {
           contador += 1;
         }
@@ -259,13 +263,13 @@ public class Documentos {
   /**
    * Método que verifica si el código ingresado existe en las bases de datos.
    * @param cod Código que se verificará.
-   * @param docs ArrayLists.
    * @return boolean Indicará si existe el código.
    * @author 
-   */
+  */
 
-  public static boolean verificarEx(int cod, Documentos docs) {
+  public static boolean verificarEx( int cod ) {
     boolean Existe = false;
+    // Buscar en base de trabajadores formales
     for (int i = 0; i < BaseTF.size(); i++ ){
       TrabajadorFormal entacuchado = BaseTF.get(i);
       int numerito = entacuchado.getCodigo();
@@ -273,22 +277,25 @@ public class Documentos {
       Existe = true; //Torna true si encuentra una similitud.
       }
     }
+    // Buscar en base de trabajadores temporales
     for (int j = 0; j < BaseTT.size(); j++ ){
       TrabajadorInformal don = BaseTT.get(j);
-      int numerazo = don.getCodigoID();
+      int numerazo = don.getCodigo();
       if(cod == numerazo) {
         Existe = true;//Torna true si encuentra una similitud.
       }
     }
+    // Buscar en base de empleadores formales
     for (int k = 0; k < BaseEF.size(); k++ ){
-      Empleador Jefe = BaseEF.get(k);
+      EmpleadorFormal Jefe = BaseEF.get(k);
       int Num = Jefe.getCodigo();
       if(cod == Num){
         Existe = true;//Torna true si encuentra una similitud.
       }
     }
-    for (int l = 0; l<BaseEF.size(); l++ ){
-      Empleador Senito = BaseEF.get(l);
+    // Buscar en base de empleadores temporales
+    for (int l = 0; l<BaseET.size(); l++ ){
+      EmpleadorTemporal Senito = BaseET.get(l);
       int numerito = Senito.getCodigo();
       if(cod == numerito) {
         Existe = true;//Torna true si encuentra una similitud.
@@ -302,32 +309,42 @@ public class Documentos {
   /**
    * Método para agregar un perfil a la lista de trabajadores formales.
    * @param TI Trabajador formal por agregar.
-   * @return void
    * @author 
    */
   public static void AddTrabajadorFormal( TrabajadorFormal TF ) {
     BaseTF.add(TF);
+    Usuarios.add(TF);
   }
 
   /**
    * Método para agregar un perfil a la lista de trabajadores informales.
    * @param TI Trabajador informal por agregar.
-   * @return void
    * @author 
    */
   public static void AddTrabajadorInformal( TrabajadorInformal TI ) {
     BaseTT.add(TI);
+    Usuarios.add(TI);
   }
 
   /**
    * Método para agregar un perfil a la lista de trabajadores formales.
-   * @param TF Trabajador formal por agregar.
-   * @return void
-   * @author alias "el avatar"
+   * @param EF Empleador formal por agregar.
+   * @author Andrés Osorio
    */
 
-  public static void AddTrabajadorFormal(TrabajadorFormal TF){
-    BaseTF.add(TF);
+  public static void AddEmpleadorFormal( EmpleadorFormal EF ){
+    BaseEF.add(EF);
+    Usuarios.add(EF);
+  }
+
+  /**
+   * Método para agregar un perfil a la lista de empleadores temporales
+   * @param ET Empleador temporal por agregar.
+   * @author Paola De León
+  */
+  public static void AddEmpleadorTemporal( EmpleadorTemporal ET ){
+    BaseET.add(ET);
+    Usuarios.add(ET);
   }
 
 }
