@@ -22,9 +22,9 @@ public class TrabajoTemp {
   public TrabajoTemp ( ) { }
 
   // Constructor que creará objetos del Trabajo temporal
-  public TrabajoTemp ( String Nombre, int Contacto, String CategoriaTrabajo, String DescripcionTrabajo, int Sueldo ) {
-    this.Nombre = Nombre;
-    this.Contacto = Contacto;
+  public TrabajoTemp ( usuarioSamaj user, String CategoriaTrabajo, String DescripcionTrabajo, int Sueldo ) {
+    this.Nombre = user.getNombre();
+    this.Contacto = user.getContacto();
     this.CategoriaTrabajo = CategoriaTrabajo;
     this.DescripcionTrabajo = DescripcionTrabajo;
     this.Sueldo = Sueldo;
