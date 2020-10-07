@@ -18,15 +18,15 @@ public class EmpleadorTemporal extends EmpleadorFormal {
     //Constructor
     public EmpleadorTemporal( usuarioSamaj user ) {
         // Llamar a constructor de EmpleadorFormal
-        super( user.getNombre(), user.getApellido(), user.getCorreo(), user.getTelefono(), user.getCodigo() );
-        TrabajoInformal = new ArrayList<TrabajoTemp>(); 
+        super( user );
+        TrabajoTemporal = new ArrayList<TrabajoTemp>(); 
     }
 
     // Getters
-    public ArrayList<TrabajoTemp> getTrabajoInformal() { return TrabajoInformal;}
+    public ArrayList<TrabajoTemp> getTrabajoTemporal() { return TrabajoTemporal; }
 
     // Setters
-    public ArrayList<TrabajoTemp> setTrabajoInformal ( ArrayList<TrabajoTemp> a ) { TrabajoInformal = a; return TrabajoInformal; }
+    public ArrayList<TrabajoTemp> setTrabajoTemporal ( ArrayList<TrabajoTemp> a ) { TrabajoTemporal = a; return TrabajoTemporal; }
 
     /**
      * Método para agregar un trabajo a la lista de trabajos temporales.
