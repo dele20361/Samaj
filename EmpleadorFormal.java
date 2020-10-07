@@ -26,7 +26,6 @@ public class EmpleadorFormal extends usuarioSamaj {
      * @author Paola De León
     */
     public String toString() {
-      Boolean IsFormal = a.getFormal ();
       String mensaje = "";
       mensaje +=  "Informacion del empleador formal: ";
       mensaje += "- Nombre: " + this.Nombre;
