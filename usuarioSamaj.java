@@ -13,11 +13,13 @@ public class usuarioSamaj {
     protected String Nombre, Apellido, Correo;
     protected int Telefono, Codigo, Contacto;
 
+    public usuarioSamaj(){}
+
     // Constructor
     public usuarioSamaj( String Nombre, String Apellido, String Correo, int Telefono, int Codigo ) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
-        this.Correo = Corre;
+        this.Correo = Correo;
         this.Telefono = Telefono;
         this.Codigo = Codigo;
     }
