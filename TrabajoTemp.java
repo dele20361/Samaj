@@ -12,7 +12,7 @@ public class TrabajoTemp {
 
   //Propiedades
   private String Nombre; // Nombre del empleador que publicará el trabajo
-  private int Contacto; // Contacto del empleador
+  private int Telefono; // Contacto del empleador
   private String CategoriaTrabajo; // Palabra clave que representará el tipo de trabajo
   private String DescripcionTrabajo; // Breve descripción del trabajo
   private int Sueldo; // Pago que se ofrecerá por realizar el trabajo
@@ -24,7 +24,7 @@ public class TrabajoTemp {
   // Constructor que creará objetos del Trabajo temporal
   public TrabajoTemp ( usuarioSamaj user, String CategoriaTrabajo, String DescripcionTrabajo, int Sueldo ) {
     this.Nombre = user.getNombre();
-    this.Contacto = user.getContacto();
+    this.Telefono = user.getTelefono();
     this.CategoriaTrabajo = CategoriaTrabajo;
     this.DescripcionTrabajo = DescripcionTrabajo;
     this.Sueldo = Sueldo;
@@ -33,17 +33,17 @@ public class TrabajoTemp {
 
   // Getters
   public String getNombre () { return Nombre; }
-  public int getContacto () { return Contacto; }
   public String getCategoriaTrabajo () { return CategoriaTrabajo; }
   public String getDescripcionTrabajo () { return DescripcionTrabajo; }
+  public int getTelefono () { return Telefono; }
   public int getSueldo () { return Sueldo; }
   public int getCantTrabajosTemp () { return CantTrabajosTemp; }
   
   // Setters
   public String setNombre ( String a ) { Nombre = a; return Nombre; }
-  public int setContacto ( int a ) { Contacto = a; return Contacto; }
   public String setCategoriaTrabajo ( String a ) { CategoriaTrabajo = a; return CategoriaTrabajo; }
   public String setDescripcionTrabajo ( String a ) { DescripcionTrabajo = a; return DescripcionTrabajo; }
+  public int setTelefono ( int a ) { Telefono = a; return Telefono; }
   public int setSueldo ( int a ) { Sueldo = a; return Sueldo; }
   public int setCantTrabajosTemp ( int a ) { CantTrabajosTemp = a; return CantTrabajosTemp; }
   
@@ -59,7 +59,7 @@ public class TrabajoTemp {
     boolean Exito = false;
     // Si la opción que eligió el usuario es 1: Se cambiará el contacto del trabajo.
     if ( opc == 1 ) {
-        temp.setContacto( CambioN );
+        temp.setTelefono( CambioN );
         Exito = true;
     }
     // Si la opción que eligió el usuario es 2: Se cambiará el salario del trabajo.
@@ -112,7 +112,7 @@ public class TrabajoTemp {
   public String toString( TrabajoTemp a ) {
     String mensaje = "";
     mensaje += "- Nombre del empleador: " + a.getNombre() + "\n";
-    mensaje += "- Contacto del empleador: " + a.getContacto()+ "\n";
+    mensaje += "- Telefono del empleador: " + a.getTelefono()+ "\n";
     mensaje += "- Categoría del trabajo temporal: " + a.getCategoriaTrabajo()+ "\n";
     mensaje += "- Descripción del trabajo temporal: " + a.getDescripcionTrabajo()+ "\n";
     mensaje += "- Sueldo del trabajo temporal: " + a.getSueldo()+ "\n";
@@ -132,16 +132,6 @@ public class TrabajoTemp {
     mensaje += "La cantidad total de trabajos temporales es: " + CantTrabajosTemp;
 
     return mensaje;
-  }
-  
-  /**
-   * Método para subir un perfil de trabajador formal al ArrayList general.
-   * @param TF Trabajador formal que se quiere subir.
-   * @return void
-   * @author 
-   */
-  public void SubirPerfil( TrabajadorFormal TF ) {
-    Documentos.AddTrabajadorFormal(TF);
   }
 
 }
