@@ -14,39 +14,47 @@ programa de Samaj-20
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Character;
+/*Autor: Alejandro Gomez */
 
  public class Persistencia{
-   PrintWriter pw, pw2;
-   StringBuilder sb, sb2;
+   PrintWriter imp, imp2;
+   StringBuilder escribir, escribir2;
    String directorio;
+   ArrayList<ArrayList<String>> datos = new ArrayList<ArrayList<String>>();
+   ArrayList<String> fila = new ArrayList<String>();
 
    public Persistencia(String csvPath){
       //PEDIR AL USUARIO QUE INGRESE SU DIRECTORIO EN EL CONTROLADOR
       directorio = csvPath;
       try {
-         pw = new PrintWriter(new File(directorio));
-         sb = new StringBuilder();
-         sb.append("Nombre");
-         sb.append(",");
-         sb.append("Apellido");
-         sb.append(",");
-         sb.append("Telefono");
-         sb.append(",");
-         sb.append("Correo");
-         sb.append("\r\n");
-         pw.write(sb.toString());
-         pw.close();
+         imp = new PrintWriter(new File(directorio));
+         escribir = new StringBuilder();
+         escribir.append("Nombre");
+         escribir.append(",");
+         escribir.append("Apellido");
+         escribir.append(",");
+         escribir.append("Telefono");
+         escribir.append(",");
+         escribir.append("Correo");
+         escribir.append("\r\n");
+         imp.write(sb.toString());
+         imp.close();
          System.out.println("Archivo Perfiles.csv creado.");
 
-         pw2 = new PrintWriter(new File(directorio));
-         sb2 = new StringBuilder();
-         sb2.append("Codigos");
-         sb2.append("\r\n");
-         pw2.write(sb2.toString());
-         pw2.close();
+         imp2 = new PrintWriter(new File(directorio));
+         escribir2 = new StringBuilder();
+         escribir2.append("Codigos");
+         escribir2.append("\r\n");
+         imp2.write(sb2.toString());
+         imp2.close();
          System.out.println("Archivo Codigos.csv creado.");
       } catch (Exception e) {
-         System.out.println("Error.");
+         System.out.println("Ha ocurrido un error.");
       }
    }
 
@@ -66,3 +74,37 @@ import java.io.PrintWriter;
    public static void nuevoRegistro(int codigo){
       sb2.append(codigo);
 
+	public void leerArchivo() {
+		StringBuilder sb = new StringBuilder();
+		Path filePath = Paths.get("data.csv");
+		try {
+			BufferedReader br = Files.newBufferedReader(filePath);
+			String linea;
+         String variable;
+         char celda;
+
+			while((linea = br.readLine()) != null) {
+            for(int i = 0; linea.length(); i++){
+               if(linea.charAt(i)==','){
+                  fila.add(Character.toString(celda));
+                  celda = '';
+               }else{
+                  celda += linea.charAt(i);
+               }
+            }
+             datos.add(fila);
+             fila.clear();
+			}
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println(sb);
+	}
+
+
+
+   public ArrayList<String> almacenarInfoArrayList(){
+      
+   }
+}
