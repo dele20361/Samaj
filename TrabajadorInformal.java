@@ -23,7 +23,7 @@ public class TrabajadorInformal extends usuarioSamaj {
   public String getAreaConocimiento () { return AreaConocimiento; }
 
   // Setters
-  public setAreaConocimiento ( String a ) { AreaConocimiento =  a; }
+  public void setAreaConocimiento ( String a ) { AreaConocimiento =  a; }
 
   /**
    * Método para mostrar la infromación de un trabajador informal.
