@@ -8,7 +8,7 @@ Clase que trabaja con el perfil del trabajador formal
 Samaj-20
 *****************/
 
-public class TrabajadorFormal {
+public class TrabajadorFormal extends usuarioSamaj {
 
   //Atributos
   private int Edad;
