@@ -75,66 +75,36 @@ public class Main {
           if (submenu1 == 1){//Crear perfil TrabajadorFormal
             System.out.println( "----------Trabajo bajo contrato----------" );
             //Pedirle los datos para la creación de su perfil al usuario.
-            System.out.println("Ingrese su nombre");
-             TrabajadorFN = scan.nextLine();
-            
-            System.out.println("Ingrese su apellido");
-             TrabajadorFA = scan.nextLine();
-              
-            System.out.println("Ingrese su edad");
-             TrabajadorFI = scan.nextInt();
-            scan.nextLine();
+            //Nombre
+             TrabajadorFN = vista.ingresarNombre();
 
-            System.out.println("Ingrese su correo");
-            CorreoFC = scan.nextLine();
-              
-            System.out.println("Ingrese su nivel de educacion");
-            System.out.println("1. Primaria \n 2. Secundaria \n 3. Universitaria \n 4. 4. Posgrado");
-            TrabajadorFE = scan.nextInt();
-            scan.nextLine();
-              
-            System.out.println("Experiencia laboral (SI/NO)");
-            ingreso = scan.nextLine();
-            ingreso = ingreso.toLowerCase();
-            //Verifica el ingreso para asignarle un valor a la variable TrabajadorFL.
-            if (ingreso.equals("si")) { 
-              TrabajadorFL = true;
-            } 
-            else if (ingreso.equals("no")) {
-              TrabajadorFL = false;
-            }
-              
-            System.out.println("Ingrese el idioma de su dominio que desea mostrar en su perfil.");
-            System.out.println("1. Español \n 2.Ingles \n 3.Aleman \n 4.Frances \n 5. Mandarín\n 6. Portugues\n 7. Otros");
-            idiom = scan.nextInt();
-            scan.nextLine();
-              
-            System.out.println("Transporte (SI/NO)");
-            ingresoT = scan.nextLine();
-            ingresoT = ingresoT.toLowerCase();
-            //Verifica el ingreso para asignarle un valor a la variable TrabajadorFT.
-            if (ingresoT.equals("si") ) {
-              TrabajadorFT = true;
-            } 
-            else if (ingresoT.equals("no") ) {
-              TrabajadorFT = false;
-            }
-            System.out.println("Ingrese su numero de telefono: ");
-            TrabajadorINT = scan.nextInt();
-            scan.nextLine();
+            //Apellido
+             TrabajadorFA = vista.ingresarApellido();
 
-            System.out.println("Cuenta con herramientas de Homeoffice? (SI/NO)");
-            ingresoHO = scan.nextLine();
-            ingresoHO = ingresoHO.toLowerCase();
-            //Verifica el ingreso para asignarle un valor a la variable TrabajadorHO.
-            if (ingresoHO.equals("si")) { 
-              TrabajadorHO = true;
-            } 
-            }
-            else if ( ingresoHO.equals("no") ) {
-              TrabajadorHO = false;
-            }
+            //Edad
+             TrabajadorFI = vista.ingresarEdad();
+
+            //Correo
+            CorreoFC = vista.ingresarCorreo();
+
+            //Eduacion
+            TrabajadorFE = vista.ingresarEducacion();
+
+            //Experiencia Laboral
+            TrabajadorFL = vista.ingresarExperienciaLaboral();
+
+            //Idioma
+            idiom = vista.ingresarIdioma();
+
+            //Transporte
+            TrabajadorFT = vista.ingresarTransporte();
             
+            //Telefono
+            TrabajadorINT = vista.ingresarTelefono();
+           
+            //Home Office
+            TrabajadorHO = vista.ingresarHomeOffice();
+          
             int cod = Documentos.generarCod(docs);
                       
             //Construir TrabajadorF y subir su perfil a la base de datos.
@@ -149,24 +119,27 @@ public class Main {
           else if (submenu1 == 2) {
             //Crear perfil TrabajadorInformal
             //Se despliega la informacion a solicitar al usuario:
-            System.out.println( "-----Crear Perfil Trabajo temporal-----" );
-            System.out.println("Ingrese nombre:");
-            TrabajadorIN = scan.nextLine();
 
-            System.out.println("Ingrese apellido:");
-            TrabajadorIA = scan.nextLine();
+            //Nombre
+            TrabajadorIN = vista.ingresarNombre();
 
-            System.out.println("Ingrese su area de conocimiento. Por ejemplo, Jardíneria. \n Ingreselo a continuación:  ");
-            TrabajadorIC = scan.nextLine();
-
-            System.out.println("Ingrese su numero de telefono: ");
-            TrabajadorINT2 = scan.nextInt();
+            //Apellido
+            Trabajador
+         
+       IA = vista.ingresarApellido();
             scan.nextLine();
+
+            //Conocimiento
+            TrabajadorIC = vista.ingresarConocimiento();
+            scan.nextLine();
+
+          //POSIBLE DISCREPANCIA detectada con TrabajadorINT2 (pendiente)
+            TrabajadorINT2 = vista.ingresarTelefono();
 
             int cod = generarCod(docs);
 
             //Construir TrabajadorIF y subir perfil a base de datos.
-            TrabajadorInformal don = new TrabajadorInformal (cod, TrabajadorIN, TrabajadorIA, TrabajadorIC, TrabajadorIN);
+            TrabajadorInformal don = new TrabajadorInformal (cod, TrabajadorIN, TrabajadorIA, TrabajadorIC, TrabajadorINT2);
             don.SubirPerfil(don); //Subiendo perfil...
           }
           else if (submenu1 == 3){
@@ -187,42 +160,8 @@ public class Main {
         
          
 
-      if (menu == 2 ) {
-       System.out.println( "BUSCAR TRABAJO");
-        try{
-        System.out.println( "BUSCAR TRABAJO");
-        System.out.println("A continuación se le presentarán las palabras claves de los trabajos: ");
-        int cont = 0;
-        ArrayList<String> palabrasClave = new ArrayList<String>();
-        for(int i = 0 ; (Documentos.getET()).size() ; i++){
-          for(int h = 0 ; ((Documentos.getET())[i]).getTrabajoInformal().size() ; h++){
-            cont = cont + 1;
-            System.out.println(Integer.toString(cont)+". "+((Documentos.getET())[i]).getTrabajoInformal()[h].getCategoriaTrabajo());
-            palabrasClave.add(((Documentos.getET())[i]).getTrabajoInformal()[h].getCategoriaTrabajo());
-          }
-        }
-
-        System.out.println("Ingrese el número correspondiente al trabajo que quiere aplicar: ");
-
-        int opcion = scan.nextInt();
-        scan.nextLine();
-        String palabraClaveSeleccionada =  palabrasClave.get(opcion);
-
-        for(int i = 0 ; (Documentos.getET()).size() ; i++){
-          for(int h = 0 ; ((Documentos.getET())[i]).getTrabajoInformal().size() ; h++){
-            cont = cont + 1;
-            
-            if(((Documentos.getET())[i]).getTrabajoInformal()[h].getCategoriaTrabajo().equals(palabraClaveSeleccionada)){
-              System.out.println("Los trabajos en lo que esta interesado son los siguientes: ");
-              System.out.println(((Documentos.getET())[i]).getTrabajoInformal()[h].getCategoriaTrabajo().toString());
-            }
-          }
-        }
-
-
-       } catch(Exception e) {
-        System.out.println("Solo se aceptan números.");
-       }
+      if (menu == 2 ) {r
+        vista.enlistarCategoriasTrabajo();
       }
 
       else if (menu == 3){
@@ -236,23 +175,12 @@ public class Main {
           if ( verif == true ) {
             existe = true;
             // Pedir información al usuario sobre el trabajo temporal
-            System.out.println( "PUBLICAR TRABAJO TEMPORAL");
-            System.out.println( "Ingrese los siguientes datos: " );
-            System.out.println( "- Nombre: " );
-            String Nombre = scan.nextLine();
-            scan.nextLine();
-            System.out.println( "- Contacto: " );
-            int Contacto = scan.nextInt();
-            scan.nextLine();
-            System.out.println( "- Categoria (Ingrese solamente una palabra clave) : " );
-            String Categoria = scan.nextLine();
-            scan.nextLine();
-            System.out.println( "- Descripcion: " );
-            String Descripcion = scan.nextLine();
-            scan.nextLine();
-            System.out.println( "- Sueldo: " );
-            int Sueldo = scan.nextInt();
-            scan.nextLine();
+            vista.encabezadoPublicarTrabajo();
+            String Nombre = vista.ingresarNombre();
+            int Contacto = vista.ingresarTelefono();
+            String Categoria = vista.ingresarCategoriaTrabajo();
+            String Descripcion = vista.ingresarDescripcion();
+            int Sueldo = vista.ingresarSueldo();
 
             // Crear una objeto del trabajo temporal
             TrabajoTemp ttemp = new TrabajoTemp( Nombre, Contacto, Categoria, Descripcion, Sueldo );
@@ -279,6 +207,7 @@ public class Main {
         
       }
 
+      //Terminado
       else if (menu == 4){
         while (cons != 5){ 
           System.out.println("Consejos:");
