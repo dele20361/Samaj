@@ -45,6 +45,37 @@ public class Vista {
     
     return opc;
   }
+    /**Metodo para mostrar el menu general
+    * @param n/a
+    * @return numero de opciones
+    * @author Alejandra Guzman
+    */
+
+    public int MenuGeneral(){
+      String opcS;
+      int opc = 0;
+      boolean Valide = true;
+      System.out.println(
+        "Menu:"+
+        "\n\n 1) Crear perfil\n" +
+        "2) Buscar trabajo\n"+
+        "3) Publicar trabajo\n"+
+        "4) Consejos\n"+
+        "5) Salir\n"
+      );
+      while(Valide == true){
+        System.out.println("Ingrese numero de opcion: ");
+        opcS = scan.nextLine();
+        opc = ValideNum( opcS );
+        if( opc != -1 ){
+          Valide = false;
+ 
+        }
+        else{}
+      }
+      return opc;
+
+    }
 
 
   /**
@@ -63,9 +94,11 @@ public class Vista {
     "\n\nCrear perfil\n" +
     "1) Crear perfil para trabajo bajo contrato\n" +
     "2) Crear perfil para un trabajo temporal\n" +
-    "3) Modificar perfil de tarabjador bajo contrato\n" +
-    "4) Modificar perfil de trabajador temporal\n"+
-    "5) Salir a menú principal\n"
+    "3) Crear perfil para un empleador empresarial\n" +
+    "4) Crear perfil para un empleador sin contrato\n"+
+    "5) Modificar perfil de trabajador bajo contrato\n" +
+    "6) Modificar perfil de trabajador temporal\n"+
+    "7) Salir a menú principal\n"
     );
       
     while ( Valide == true ) {
@@ -124,7 +157,7 @@ public class Vista {
 
    public int submenu2(){
      int opc = 2;
-     String opcs;
+     String opcS = "";
      boolean valide = true; 
 
      System.out.println(
@@ -133,20 +166,19 @@ public class Vista {
        "1) Buscar trabajo bajo contrato\n"+
        "2) Buscar Trabajo Temporal\n"
      );
-     while ( Valide == true ) {
+     while ( valide == true ) {
       System.out.println ( "Ingrese el número de opción: " );
       opcS = scan.nextLine ();
       opc = ValideNum( opcS );
       if ( opc != -1 ) {
-          Valide = false;
+          valide = false;
       }
       else { }
     }
     
     return opc;
   } 
-     }
-   }
+
 
 /** Metodo para ingresar
  * al submenu 3
@@ -154,13 +186,13 @@ public class Vista {
  */
     public int submenu3 (){
       int opc = 3;
-      String opcs;
-      boolean valide = true;
+      String opcS = "";
+      boolean Valide = true;
 
       System.out.println(
         "Opciones:\n"+
         "1) Publicar trabajo bajo contrato.\n"+
-        "2) Publicar trabajo tempo"al.\n
+        "2) Publicar trabajo temporal.\n"
 
       );
       while ( Valide == true ) {
@@ -181,10 +213,10 @@ public class Vista {
    */
   public int submenu4(){
     int opc = 4;
-    String opcs;
-    boolean valide = true;
+    String opcS = "";
+    boolean Valide = true;
 
-    system.out.println(
+    System.out.println(
       "Opciones:\n"+
       "1) Manejo de crisis\n"+
       "2) Restructuracion de negocios\n"+
@@ -203,13 +235,7 @@ public class Vista {
     return opc;
   } 
 
-
-    
-  }
-
-
-
-}
+  
    /** Metodo para preguntar el directorio
     * en el cual se almacenara el
     archivo csv de Samaj 2020 
@@ -235,7 +261,7 @@ public class Vista {
    * Metodo para obtener el nombre y su respectivo mensaje al usuario.
    * @param N/A.
    * @return String.
-   * @author Andrés 
+   * @author Andrés y Alejandro
   */  
   
    public String ingresarNombre(){
@@ -248,7 +274,7 @@ public class Vista {
    * Metodo para obtener el apellido y su respectivo mensaje al usuario.
    * @param N/A.
    * @return String.
-   * @author Andrés
+   * @author Andrésy Alejandro
   */   
 
    public String ingresarApellido(){
@@ -312,7 +338,7 @@ public class Vista {
    * Metodo para obtener la educacion y su respectivo mensaje al usuario.
    * @param N/A.
    * @return int.
-   * @author Andrés
+   * @author Andrés y Alejandro
   */  
 
     public int ingresarEducacion(){
@@ -423,7 +449,7 @@ public class Vista {
    * Método para obtener el telefono y su respectivo mensaje.
    * @param N/A.
    * @return int.
-   * @author Andrés 
+   * @author Andrés y Alejandro
   */ 
 
     public int ingresarTelefono(){
@@ -530,6 +556,7 @@ public class Vista {
   */ 
 
   public String ingresarCategoriaTrabajo(){
+    System.out.println( "- Categoria (Ingrese solamente una palabra clave) : " );
     String valor = "";
     opc = scan.nextLine();
     valor = opc;
@@ -560,7 +587,6 @@ public class Vista {
             palabrasClave.add((BaseET.get(i)).getTrabajoTemporal().get(h).getCategoriaTrabajo());
           }
         }
-
       ingresarOpcionTrabajo(palabrasClave);
     }
     
@@ -569,7 +595,7 @@ public class Vista {
    * Método para ingresar la opción del listado de las categorias de trabajo.
    * @param N/A.
    * @return boolean.
-   * @author Andrés
+   * @author Andres y Alejandro
   */ 
     private void ingresarOpcionTrabajo(ArrayList<String> categoriasTrabajo) {
       int valor = 0;
@@ -642,6 +668,7 @@ public class Vista {
       }
       return devolucion;
     }
+
   
   /**
    * Método para ingresar el código del usuario.
@@ -690,8 +717,8 @@ public class Vista {
     }
 
     public int ingresarSueldo(){
-      int valor;
-      boolean continuar;
+      int valor = 0 ;
+      boolean continuar = false;
       while(continuar==false){
         System.out.println("Ingrese sueldo: ");
         opc = scan.nextLine();
@@ -730,7 +757,7 @@ public class Vista {
     
     return opcConsejos;
   }
-
+/* @author Alejandro Gomez */
   public void ConsejosCrisis(){ 
       //Opcion 1: Manejo de Crisis
       System.out.println("\n1. Manejo de Crisis");
@@ -738,7 +765,7 @@ public class Vista {
      // d.browse(new URI("https://www.elempleo.com/co/noticias/consejos-profesionales/claves-para-el-manejo-de-crisis-en-las-organizaciones-5608"));
      // d.browse(new URI("https://emprendedoresynegocios.com/manejo-de-crisis-empresarial/"));
     }
-
+/* @author Alejandro Gomez */
  public void ConsejosRestruc(){ 
       //Opcion 2: Reestructuracion de negocios
       System.out.println("\n2.Reestructuracion de negocios");
@@ -746,7 +773,7 @@ public class Vista {
      // d.browse(new URI("https://www.emprendepyme.net/como-reestructurar-una-empresa-de-forma-exitosa.html"));
      // d.browse(new URI("https://www.emprendepyme.net/reestructuracion-empresarial"));
     }
-
+/* @author Alejandro Gomez */
   public void ConsejosAntiS(){ 
       //Opcion 3: Linea antisuicidio
       System.out.println("\n3.Linea antisuicidio");
@@ -754,7 +781,7 @@ public class Vista {
       System.out.println("Linea de apoyo para Guatemala: 2232-6269 o 2238-3739");
       System.out.println("Direccion de linea de apoyo:  12 calle A 0-27, zona 1");
     }
-
+/* @author Alejandro Gomez */
   public void ConsejosAyuda(){ 
       //Opcion 4: Contacto de ayuda
       System.out.println("\n4.Contacto de ayuda");
