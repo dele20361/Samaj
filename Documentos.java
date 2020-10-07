@@ -19,7 +19,8 @@ public class Documentos {
 	public static ArrayList<EmpleadorFormal> BaseEF; // ArrayList de empleadores formales.
   public static ArrayList<EmpleadorTemporal> BaseET; // ArrayList de empleadores informales
   public static ArrayList<usuarioSamaj> Usuarios; // ArrayList de usarios de Samaj
-	
+  public static ArrayList<TrabajoTemp> TrabajoTemp; // ArrayList de trabajos temporales generales
+  
 	// Constructor que instancia las listas en las que se almacenará la infromación.
   public Documentos ( ) {
     BaseTF = new ArrayList<TrabajadorFormal>();
@@ -27,6 +28,7 @@ public class Documentos {
     BaseEF = new ArrayList<EmpleadorFormal>();
     BaseET = new ArrayList<EmpleadorTemporal>();
     Usuarios = new ArrayList<usuarioSamaj>();
+    TrabajoTemp = new ArrayList<TrabajoTemp>();
   }
 
   // Getters
@@ -35,6 +37,7 @@ public class Documentos {
   public static ArrayList<TrabajadorInformal> getTT ( ) { return BaseTT; }
   public static ArrayList<TrabajadorFormal> getTF ( ) { return BaseTF; }
   public static ArrayList<usuarioSamaj> getUsuarios ( ) { return Usuarios; }
+  public static ArrayList<TrabajoTemp> getTrabajoTemp ( ) { return TrabajoTemp; }
 
   /**
    * Método para buscar un trabajador formal en ArrayList.
@@ -56,6 +59,11 @@ public class Documentos {
     
     return exists;
 	}
+
+  public void AddTrabajoTemp ( TrabajoTemp a ) {
+    ArrayList<TrabajoTemp> ListaTrabajos = TrabajoTemp;
+    ListaTrabajos.add ( a );
+  }
 
   /** 
    * Método para buscar un trabajador temporal en ArrayList.
