@@ -20,9 +20,9 @@ import java.io.PrintWriter;
    StringBuilder sb, sb2;
    String directorio;
 
-   public Persistencia(){
+   public Persistencia(String csvPath){
       //PEDIR AL USUARIO QUE INGRESE SU DIRECTORIO EN EL CONTROLADOR
-      directorio = "Aki ira el direktorio del usuario";
+      directorio = csvPath;
       try {
          pw = new PrintWriter(new File(directorio));
          sb = new StringBuilder();
