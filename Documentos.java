@@ -20,7 +20,8 @@ public class Documentos {
   public static ArrayList<EmpleadorTemporal> BaseET; // ArrayList de empleadores informales
   public static ArrayList<usuarioSamaj> Usuarios; // ArrayList de usarios de Samaj
   public static ArrayList<TrabajoTemp> TrabajoTemp; // ArrayList de trabajos temporales generales
-  
+  public static ArrayList<ArrayList<String>> InfoUsuarios; // ArrayList de info
+
 	// Constructor que instancia las listas en las que se almacenará la infromación.
   public Documentos ( ) {
     BaseTF = new ArrayList<TrabajadorFormal>();
@@ -29,6 +30,7 @@ public class Documentos {
     BaseET = new ArrayList<EmpleadorTemporal>();
     Usuarios = new ArrayList<usuarioSamaj>();
     TrabajoTemp = new ArrayList<TrabajoTemp>();
+    InfoUsuarios = new ArrayList<ArrayList<String>>();
   }
 
   // Getters
@@ -38,6 +40,10 @@ public class Documentos {
   public static ArrayList<TrabajadorFormal> getTF ( ) { return BaseTF; }
   public static ArrayList<usuarioSamaj> getUsuarios ( ) { return Usuarios; }
   public static ArrayList<TrabajoTemp> getTrabajoTemp ( ) { return TrabajoTemp; }
+  public static ArrayList<ArrayList<String>> getInfoUsuarios ( ) { return InfoUsuarios; }
+
+  // Setter
+  public static void setInfoUsuarios ( ArrayList<ArrayList<String>> a ) { InfoUsuarios = a; }
 
   /**
    * Método para buscar un trabajador formal en ArrayList.
@@ -61,8 +67,7 @@ public class Documentos {
 	}
 
   public void AddTrabajoTemp ( TrabajoTemp a ) {
-    ArrayList<TrabajoTemp> ListaTrabajos = TrabajoTemp;
-    ListaTrabajos.add ( a );
+    TrabajoTemp.add ( a );
   }
 
   /** 
@@ -354,5 +359,45 @@ public class Documentos {
     BaseET.add(ET);
     Usuarios.add(ET);
   }
+  /**
+   * Método para comparar el codigo ingresado en parámetros con el de los del ArrayList
+   * @param int Código ingresado por el usuario
+   * @author Marco Jurado 
+  */
+  public boolean verificarCodigo(int numeroEntrada){
+      boolean unico = false; //No hay código similar dentro de la base.
+      String num = Integer.toString(numeroEntrada);
+      if(InfoUsuarios.size() == 0){ unico = true; }
+      else{
+        for(int i = 0; i < InfoUsuarios.size(); i++){ //Recorre filas 
+        ArrayList<String> lista = InfoUsuarios.get(i);
+        String temp = lista.get(0); //Códigos 
+        if(num.equals(temp)){
+          unico = true;
+        }
+        else{ }
+      }}
+      
 
+      return unico;
+  } 
+
+  /**
+   * Método para devolver el ArrayList con los datos
+   * @param int Código ingresado por el usuario
+   * @author Marco Jurado 
+  */
+  public ArrayList<String> devolverDatos(int numeroEntrada){
+    ArrayList<String> devolver = new ArrayList<String>(); //No hay código similar dentro de la base.
+    String num = Integer.toString(numeroEntrada);
+    for(int i = 0; i < InfoUsuarios.size(); i++){ //Recorre filas 
+        ArrayList<String> lista = InfoUsuarios.get(i);
+        String temp = lista.get(0); //Códigos 
+        if(num.equals(temp)){
+          devolver = lista;
+        }
+        else{ }
+    }
+    return devolver;
+  } 
 }
