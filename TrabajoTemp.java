@@ -109,14 +109,14 @@ public class TrabajoTemp {
    * @return String De la info.
    * @author
    */
-  public String toString( TrabajoTemp a ) {
+  public String toString( ) {
     String mensaje = "";
-    mensaje += "- Nombre del empleador: " + a.getNombre() + "\n";
-    mensaje += "- Telefono del empleador: " + a.getTelefono()+ "\n";
-    mensaje += "- Categoría del trabajo temporal: " + a.getCategoriaTrabajo()+ "\n";
-    mensaje += "- Descripción del trabajo temporal: " + a.getDescripcionTrabajo()+ "\n";
-    mensaje += "- Sueldo del trabajo temporal: " + a.getSueldo()+ "\n";
-    mensaje += "- Cantidad de trabajos temporal total: " + a.getCantTrabajosTemp()+ "\n";
+    mensaje += "- Nombre del empleador: " + this.Nombre + "\n";
+    mensaje += "- Telefono del empleador: " + this.Telefono+ "\n";
+    mensaje += "- Categoría del trabajo temporal: " + this.CategoriaTrabajo+ "\n";
+    mensaje += "- Descripción del trabajo temporal: " + this.DescripcionTrabajo+ "\n";
+    mensaje += "- Sueldo del trabajo temporal: " + this.Sueldo+ "\n";
+    mensaje += "- Cantidad de trabajos temporales total: " + this.CantTrabajosTemp+ "\n";
     
     return mensaje;
   }
