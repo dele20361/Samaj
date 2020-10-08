@@ -29,18 +29,25 @@ public class Vista {
     int opc = 0;
     String opcS;
     boolean Valide = true;
-    System.out.println("Ya cuenta con un usuario?" +
-    "1) Si" +
-    "2) No" );
     while ( Valide == true ) {
+      
+      System.out.println("\n\nYa cuenta con un usuario?" +
+      "\n1) Si" +
+      "\n2) No" );
       System.out.println ( "Ingrese el numero de opcion: " );
       opcS = scan.nextLine ();
-      scan.nextLine ();
       opc = ValideNum( opcS );
       if ( opc != -1 ) {
+        if(opc == 1){
           Valide = false;
+        }
+        else if(opc == 2){
+          Valide = false;
+        }  
+        else { 
+          System.out.println("Por favor ingrese una opción valida. \nIntente Nuevamente");
+        }
       }
-      else { }
     }
     
     return opc;
@@ -57,9 +64,9 @@ public class Vista {
       boolean Valide = true;
       System.out.println(
         "Menu:"+
-        "\n\n 1) Crear perfil\n" +
-        "2) Buscar trabajo\n"+
-        "3) Publicar trabajo\n"+
+        "\n\n1) Crear perfil\n" +
+        "2) Crear trabajos temporales\n"+
+        "3) Buscar trabajos temporales\n"+
         "4) Consejos\n"+
         "5) Salir\n"
       );
@@ -96,13 +103,11 @@ public class Vista {
     "2) Crear perfil para un trabajo temporal\n" +
     "3) Crear perfil para un empleador empresarial\n" +
     "4) Crear perfil para un empleador sin contrato\n"+
-    "5) Modificar perfil de trabajador bajo contrato\n" +
-    "6) Modificar perfil de trabajador temporal\n"+
-    "7) Salir a menú principal\n"
+    "5) Salir a menu principal\n"
     );
       
     while ( Valide == true ) {
-      System.out.println ( "Ingrese el número de opción: " );
+      System.out.println ( "Ingrese el numero de opcion: " );
       opcS = scan.nextLine ();
       opc = ValideNum( opcS );
       if ( opc != -1 ) {
@@ -116,6 +121,15 @@ public class Vista {
   //
 
   /**
+   * Método para indicar que no hay trabajos publicados aún.
+   * @author Paola de Leon
+  **/
+  public void NullTrabajosTemp() {
+    System.out.println("Aun no hay trabajos temporales publicados...\n");
+  }
+
+  
+  /**
    * Método para validar cualquier número ingresado.
    * @param Num String de un número para verificar lo ingresado.
    * @return Número convertido en int.
@@ -128,7 +142,7 @@ public class Vista {
     }
     catch ( NumberFormatException e )
     {
-       System.out.println( "\nError! Ingrese un número válido por favor" );
+       System.out.println( "\nError! Ingrese un número valido por favor" );
     }
     
     return newNum;
@@ -147,8 +161,8 @@ public class Vista {
   * @author Alejandro Gomez
    */
    public void MensajeBienvenida(){
-     System.out.println( "Bienvenido a Samaj-20 " +
-     "\nEmpleo fácil, rápido y seguro");
+     System.out.println( "\n \n \nBienvenido a Samaj-20 " +
+     "\nEmpleo facil, rapido y seguro");
    }
 
    //**Metodo para ingresar al 
@@ -162,12 +176,12 @@ public class Vista {
 
      System.out.println(
        "Opciones:"+
-       "\n\nBuscar Trabajo"+
-       "1) Buscar trabajo bajo contrato\n"+
-       "2) Buscar Trabajo Temporal\n"
+       "\n\nBuscar Trabajo\n \n"+
+       "1) Buscar trabajos temporales\n"+
+       "2) Salir al menú principal\n"
      );
      while ( valide == true ) {
-      System.out.println ( "Ingrese el número de opción: " );
+      System.out.println ( "Ingrese el numero de opcion: " );
       opcS = scan.nextLine ();
       opc = ValideNum( opcS );
       if ( opc != -1 ) {
@@ -196,7 +210,7 @@ public class Vista {
 
       );
       while ( Valide == true ) {
-        System.out.println ( "Ingrese el número de opción: " );
+        System.out.println ( "Ingrese el numero de opcion: " );
         opcS = scan.nextLine ();
         opc = ValideNum( opcS );
         if ( opc != -1 ) {
@@ -220,10 +234,11 @@ public class Vista {
       "Opciones:\n"+
       "1) Manejo de crisis\n"+
       "2) Restructuracion de negocios\n"+
-      "3) Linea anti suicidio\n"
+      "3) Linea anti suicidio\n"+
+      "4) Salir al menú general"
     );
     while ( Valide == true ) {
-      System.out.println ( "Ingrese el número de opción: " );
+      System.out.println ( "Ingrese el numero de opcion: " );
       opcS = scan.nextLine ();
       opc = ValideNum( opcS );
       if ( opc != -1 ) {
@@ -326,7 +341,7 @@ public class Vista {
          valor = opc;
          continuar = true;
        }else{
-         ErrorMns();
+         MensajeErrorCorreo();
          continuar = false;
        }
      }
@@ -345,10 +360,9 @@ public class Vista {
       int valor = 0;
       boolean continuar = false;
       while(continuar==false){
-        System.out.println("Ingrese su nivel de educacion");
-        System.out.println("1. Primaria \n 2. Secundaria \n 3. Universitaria \n 4. 4. Posgrado");
+        System.out.println("\nIngrese su nivel de educacion");
+        System.out.println("1. Primaria \n2. Secundaria \n3. Universitaria \n4. Posgrado");
         opc = scan.nextLine();
-        scan.nextLine();
         int opcion = ValideNum(opc);
         if(opcion==1 || opcion==2 || opcion==3 || opcion==4){
           valor = opcion;
@@ -400,8 +414,8 @@ public class Vista {
       int valor = 0;
       boolean continuar = false;
       while(continuar==false){
-        System.out.println("Ingrese el idioma de su dominio que desea mostrar en su perfil.");
-        System.out.println("1. Español \n 2.Ingles \n 3.Aleman \n 4.Frances \n 5. Mandarín\n 6. Portugues\n 7. Otros");
+        System.out.println("Ingrese el idioma (1) de su dominio que desea mostrar en su perfil.");
+        System.out.println("1.Español \n2.Ingles \n3.Aleman \n4.Frances \n5.Mandarin\n6.Portugues\n7. Otros");
         opc = scan.nextLine();
         int opcion = ValideNum(opc);
         if(opcion == 1 || opcion == 2 || opcion == 3 || opcion == 4 || opcion == 5 || opcion == 6 || opcion ==7){
@@ -430,7 +444,6 @@ public class Vista {
         System.out.println("Transporte (SI/NO)");
         opc = scan.nextLine();
         opc = opc.toLowerCase();
-        scan.nextLine();
         if(opc.equals("si")){
           valor = true;
           continuar = true;
@@ -458,12 +471,11 @@ public class Vista {
       while(continuar==false){
         System.out.println("Ingrese su numero de telefono: ");
         String opc = scan.nextLine();
-        scan.nextLine();
         int tel = ValideNum(opc);
         if(tel != -1){
           valor = tel;
           continuar = true;
-        }else{
+        } else {
           // No hace falta agregar un mensaje de invalidación, puesto que el método ValideNum ya lo tiene.
           continuar = false;
         }
@@ -471,7 +483,8 @@ public class Vista {
 
       return valor;
     }
-         /**
+
+  /**
    * Método para obtener el telefono y su respectivo mensaje.
    * @param N/A.
    * @return int.
@@ -495,7 +508,7 @@ public class Vista {
           continuar = false;
         }
       }
-      if (numLongitud > 5 || numLongitud < 5 ){ 
+      if (numLongitud > 8 || numLongitud < 8 ){ 
       scan.nextLine();
       int tel = ValideNum(opc);
       }
@@ -504,6 +517,36 @@ public class Vista {
     }
   }
 */
+
+  // /**
+  //  * Método para obtener el telefono y su respectivo mensaje.
+  //  * @param N/A.
+  //  * @return int.
+  //  * @author Andrés con modificaciones de Alejandro Gomez
+  // */ 
+  // public int ingresarTelefono() {
+  //   int opc = 0;
+  //   String opcS;
+  //   boolean Valide = true;
+  //   while ( Valide == true ) {
+  //     System.out.println ( "Ingrese su número telefónico: " );
+  //     opcS = scan.nextLine ();
+  //     if ( opcS.length() == 8 ) {
+
+  //     }
+  //     else {
+  //       V
+  //     }
+  //     opc = ValideNum( opcS );
+  //     if ( opc != -1 ) {
+  //       Valide = false;
+  //     }
+  //   }
+    
+  //   return opc;
+  // }
+
+
    /**
    * Método para obtener la experiencia de HomeOffice y mostrar su respectivo mensaje.
    * @param N/A.
@@ -517,7 +560,6 @@ public class Vista {
       System.out.println("Cuenta con herramientas de Homeoffice? (SI/NO): ");
       opc = scan.nextLine();
       opc = opc.toLowerCase();
-      scan.nextLine();
       if(opc.equals("si")){
         valor = true;
         continuar = true;
@@ -542,6 +584,8 @@ public class Vista {
 
     public String ingresarConocimiento(){
       String valor = "";
+      System.out.println("Ingrese el area de cocimiento de interes a laborar ");
+      System.out.println("(Ejemplos: Jardineria, educacion, construccion, carpinteria) :");
       opc = scan.nextLine();
       valor = opc;
 
@@ -572,22 +616,29 @@ public class Vista {
    * @author Andrés
   */ 
 
-    public void enlistarCategoriasTrabajo(){
+    public void enlistarCategoriasTrabajo(Documentos docs){
       int cont = 0;
       ArrayList<String> palabrasClave = new ArrayList<String>();
 
         System.out.println("BUSCAR TRABAJO");
-        System.out.println("A continuación se le presentarán las palabras claves de los trabajos: ");
-        ArrayList<EmpleadorTemporal> BaseET = Documentos.getET();
-        for (int i = 0 ; i<BaseET.size()  ; i++){   //por que :_(  )
-          for (int h = 0 ; h<(BaseET.get(i)).getTrabajoTemporal().size() ; h++){
-            
-            cont = cont + 1;
-            System.out.println(Integer.toString(cont)+". "+((Documentos.getET()).get(i)).getTrabajoTemporal().get(h).getCategoriaTrabajo());
-            palabrasClave.add((BaseET.get(i)).getTrabajoTemporal().get(h).getCategoriaTrabajo());
-          }
+        System.out.println("A continuacion se le presentaran la informacion de los trabajos: ");
+        ArrayList<TrabajoTemp> TrabajosTemporales = docs.getTrabajoTemp();
+        if (TrabajosTemporales.size() == 0 ) {
+          NullTrabajosTemp();
         }
-      ingresarOpcionTrabajo(palabrasClave);
+        else {
+          for (int i = 0 ; i<TrabajosTemporales.size()  ; i++){   //por que :_(  )
+            //for (int h = 0 ; h<(BaseET.get(i)).getTrabajoTemporal().size() ; h++){
+              TrabajoTemp Tempo = TrabajosTemporales.get(i);
+              System.out.println(Tempo.toString());
+              System.out.println("\n");
+              // cont = cont + 1;
+              // System.out.println(Integer.toString(cont)+". "+((Documentos.getET()).get(i)).getTrabajoTemporal().get(h).getCategoriaTrabajo());
+              // palabrasClave.add((BaseET.get(i)).getTrabajoTemporal().get(h).getCategoriaTrabajo());
+            //}
+          }
+        //ingresarOpcionTrabajo(palabrasClave);
+        }
     }
     
 
@@ -624,7 +675,7 @@ public class Vista {
   */ 
     private void enlistarTrabajos(int valor, ArrayList<String> categoriasTrabajo){
       String palabraClaveSeleccionada =  categoriasTrabajo.get(valor);
-      System.out.println("Los trabajos de su interés son los siguientes: ");
+      System.out.println("Los trabajos de su interes son los siguientes: ");
         for(int i = 0 ; i<(Documentos.getET()).size() ; i++){
           for(int h = 0 ; h<((Documentos.getET()).get(i)).getTrabajoTemporal().size() ; h++){
             if(((Documentos.getET()).get(i)).getTrabajoTemporal().get(h).getCategoriaTrabajo().equals(palabraClaveSeleccionada)){
@@ -649,7 +700,7 @@ public class Vista {
   */
 
     public int MensajeTieneUsuario(){
-      System.out.println("¿Posee código ID en Samaj 2020? \nIngrese Si / No según su respuesta.");
+      System.out.println("¿Posee codigo ID en Samaj 2020? \nIngrese Si / No según su respuesta.");
       int devolucion = 0;
       String ingreso = "";
       boolean correct = false;
@@ -663,7 +714,7 @@ public class Vista {
           devolucion = -1;
           correct = true;
         }else{
-          System.out.println("Por favor ingrese únicamente si o no. Por favor intente nuevamente.");
+          System.out.println("Por favor ingrese unicamente si o no. Por favor intente nuevamente.");
         }
       }
       return devolucion;
@@ -672,33 +723,44 @@ public class Vista {
   
   /**
    * Método para ingresar el código del usuario.
-   * @param n/a.
+   * @param docs. Esta es la instancia de Documentos en controlador.
    * @return int.
    * @author Marco 
   */
-  public int IngresoCodigo(){
+  public int IngresoCodigo(Documentos docs){
     int numeritoCOD = 0;
     String num = "";
     boolean Valide = false;
     while ( Valide == false ) {
-      System.out.println ( "Ingrese el código: " );
-      num = scan.nextLine();
-      numeritoCOD = ValideNum( num );
-      if ( numeritoCOD != -1 ) {
-          Valide = true;
-      }
+      boolean Existe = false;
+        System.out.println ( "Ingrese el codigo que desea para ingresar a su perfil: " );
+        num = scan.nextLine();
+        numeritoCOD = ValideNum( num );
+        if ( numeritoCOD != -1 ) {
+          boolean ExisteCod = docs.verificarCodigo(numeritoCOD);//Método para verificar que sea único.
+          if (ExisteCod == false){
+            Existe = true;
+          }
+        }
+        else{
+        System.out.println("erigei Tu CODIGO  no existe");
+        numeritoCOD = -1;
+        }
+      
+      Valide = true;
     }
+
     return numeritoCOD;
   }
   public void MensajeErrorMenu(){
-    System.out.println("Ha ingresado un número invalido. Porfavor intente nuevamente");
+    System.out.println("Ha ingresado un numero invalido. Porfavor intente nuevamente");
   }
   public void MensajeDespedida(){
     System.out.println("Usted ha salido del programa. \nCreditos: Alejandro Gomez, Alejandra Guzman, Paola de León Molina, Marco Jurado,Andres Osorio. ");
     System.out.println("¡Esperamos que vuelva pronto!");
   }
   public void MensajeRegresoMenuPrincipal(){
-    System.out.println("Regresando a menú principal... \n \n \n \n");
+    System.out.println("Regresando a menu principal... \n \n \n \n");
   }
    
 
@@ -746,10 +808,9 @@ public class Vista {
   public int Consejos(){
     boolean Validar = true;
     System.out.println("Consejos:");
-    System.out.println("1. Manejo de crisis \n 2.Reestructuracion de negocios \n 3.Linea antisuicidio \n 4.Contacto de ayuda \n 5.Regresar a menu ");
+    System.out.println(" 1. Manejo de crisis \n 2. Reestructuracion de negocios \n 3. Linea antisuicidio \n 4. Contacto de ayuda \n 5. Regresar a menu \n Ingrese el numero de opcion: ");
     String cons = scan.nextLine();
     int opcConsejos = ValideNum(cons);
-    scan.nextLine();
     if (opcConsejos != -1) {
       Validar = false;
     }
@@ -762,21 +823,21 @@ public class Vista {
       //Opcion 1: Manejo de Crisis
       System.out.println("\n1. Manejo de Crisis");
       System.out.println("Los siguientes links le serán de mucha ayuda:");
-     // d.browse(new URI("https://www.elempleo.com/co/noticias/consejos-profesionales/claves-para-el-manejo-de-crisis-en-las-organizaciones-5608"));
-     // d.browse(new URI("https://emprendedoresynegocios.com/manejo-de-crisis-empresarial/"));
+      System.out.println("https://www.elempleo.com/co/noticias/consejos-profesionales/claves-para-el-manejo-de-crisis-en-las-organizaciones-5608");
+      System.out.println("https://emprendedoresynegocios.com/manejo-de-crisis-empresarial/");
     }
 /* @author Alejandro Gomez */
  public void ConsejosRestruc(){ 
       //Opcion 2: Reestructuracion de negocios
-      System.out.println("\n2.Reestructuracion de negocios");
+      System.out.println("\n2. Reestructuracion de negocios");
       System.out.println("Los siguientes links le serán de mucha ayuda:");
-     // d.browse(new URI("https://www.emprendepyme.net/como-reestructurar-una-empresa-de-forma-exitosa.html"));
-     // d.browse(new URI("https://www.emprendepyme.net/reestructuracion-empresarial"));
+      System.out.println("https://www.emprendepyme.net/como-reestructurar-una-empresa-de-forma-exitosa.html");
+      System.out.println("https://www.emprendepyme.net/reestructuracion-empresarial");
     }
 /* @author Alejandro Gomez */
   public void ConsejosAntiS(){ 
       //Opcion 3: Linea antisuicidio
-      System.out.println("\n3.Linea antisuicidio");
+      System.out.println("\n3. Linea antisuicidio");
       System.out.println("En caso necesite ayuda, recuerde que siempre hay alguien dispuesto a escucharlo");
       System.out.println("Linea de apoyo para Guatemala: 2232-6269 o 2238-3739");
       System.out.println("Direccion de linea de apoyo:  12 calle A 0-27, zona 1");
@@ -784,9 +845,32 @@ public class Vista {
 /* @author Alejandro Gomez */
   public void ConsejosAyuda(){ 
       //Opcion 4: Contacto de ayuda
-      System.out.println("\n4.Contacto de ayuda");
+      System.out.println("\n4. Contacto de ayuda");
       System.out.println("Hemos habilitado una pagina para que pueda acudir en caso tenga cualquier duda");
-     // d.browse(new URI("https://www.facebook.com/Samaj-2020-107001737815812"));
+      System.out.println("https://www.facebook.com/Samaj-2020-107001737815812");
     }
 
+    public void MensajeErrorCorreo(){
+      System.out.println("Error! Por favor asegurese de ingresar un correo valido. \nUtilice el carácter -@-.\n \nIntente Nuevamente...\n");
+    }
+
+    public void CrearTemp(){
+      System.out.println("Crear trabajo temporal:\n");
+    }
+    public void CrearCon(){
+      System.out.println("Crear trabajo bajo contrato:\n");
+    }
+    
+  public void PerfilExito(){
+    System.out.println("\nChilerisimo. Ha creado un perfil con exito\n");
   }
+    public void IngresoInfo(){
+      System.out.println("\n\nIngrese los datos que se le solicitan");
+    }
+
+  public void MensajeTrabajadorFormalExito(){
+    System.out.println("\n \nSu perfil se ha añadido a la base de datos. \n¡Esperamos lo contacten pronto!\n \n");
+  }
+    
+  }
+
