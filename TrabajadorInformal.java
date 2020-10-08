@@ -29,7 +29,7 @@ public class TrabajadorInformal extends usuarioSamaj {
    * Método para mostrar la infromación de un trabajador informal.
    * @param a Trabajador informal del cuál se mostrará la información.
    * @return String Con la info del trabajador.
-   * @author 
+   * @author Paola De León
   */
   public String toString() {
     String result = "";
