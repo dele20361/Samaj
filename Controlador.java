@@ -11,10 +11,10 @@ Samaj-20
 import java.util.ArrayList;
 
 public class Controlador {
-  public static void main(String[] args) {
+  public static void main (String[] args) {
 
     //Propiedades
-    int opc;
+    //int opc;
     String NombreUsuario;
     String ApellidoUsuario;
     String CorreoUsuario;
@@ -43,13 +43,13 @@ public class Controlador {
     ArrayList<ArrayList<String>> BaseDatos = p.obtenerDatos();
     docs.setInfoUsuarios(BaseDatos); //Guarada en la clase Documentos los datos de la base de datos.
     
-    // C R E A R   U S U A R I O  
+    //-------------------------------------------------------- C R E A R   U S U A R I O -----------------------------------------------------
     // Proceso de verificar existencia de perfil y/o creación de perfil
     int varTemporal = v.ExisteUsuario(); //Preguntar si tiene o no perfil. Devuelve 1 o 2 únicamente.
-    if(varTemporal == 1){
+    if (varTemporal == 1) {
       //El usuario dice que tiene perfil
       CodigoUsuario = v.IngresoCodigo(docs);
-      if(CodigoUsuario == -1){ //El código se verificó y no existe.
+      if (CodigoUsuario == -1) { //El código se verificó y no existe.
         v.IngresoInfo();
         NombreUsuario = v.ingresarNombre();
         ApellidoUsuario = v.ingresarApellido();
@@ -60,7 +60,7 @@ public class Controlador {
         p.nuevoRegistro(user);
         v.PerfilExito(); //Mensaje de creado con éxito. CHILERISIMO
       }
-      else{ //Código si existe entonces se toman datos del ArrayList que tenga el código
+      else { //Código si existe entonces se toman datos del ArrayList que tenga el código
         ArrayList<String> datosUsuario = docs.devolverDatos(CodigoUsuario);
         String NombreU = datosUsuario.get(1);
         String ApellidoU = datosUsuario.get(2);
@@ -75,13 +75,13 @@ public class Controlador {
         p.nuevoRegistro(user);
         v.PerfilExito(); //Mensaje de creado con éxito. CHILERISIMO
       }
-
+      
       /*
       Se buscará el CodigoUsuario en el CSV
       para verificar que el código del 
       usuario en realidad existe.        */
 
-    } else if(varTemporal == 2){
+    } else if (varTemporal == 2) {
       /* Se ejecuta en caso el usuario
         no posea un perfil creado en
         Samaj-2020          */ 
@@ -96,17 +96,16 @@ public class Controlador {
       v.PerfilExito(); //Mensaje de creado con éxito. CHILERISIMO
     }
 
-
     // C O M I E N Z A   M E N Ú   G E N E R A L
-    while( salir == false){
+    while ( salir == false) {
       int opcion = v.MenuGeneral(); //Método de Menú de vista
       if(opcion == 1){
 
         //Sub Menú 
         boolean salirSub1 = false;
-        while(salirSub1 == false) {
+        while (salirSub1 == false) {
           int submenu1 = v.SubMenu();
-          if(submenu1 == 1){
+          if (submenu1 == 1){
             /* Ingresar los datos para crear el perfil donde se obtienen los
                datos adicionales para crear el Trabajador Formal. */
             v.IngresoInfo();
@@ -134,48 +133,48 @@ public class Controlador {
             docs.AddTrabajadorInformal( don );
             v.PerfilExito();
           }
-          else if(submenu1 == 3) {
-            
+          else if (submenu1 == 3) {
             //Construir EmpleadorFormal y subir perfil a Documentos
             EmpleadorFormal Jefe = new EmpleadorFormal(user);
             docs.AddEmpleadorFormal( Jefe );
             v.PerfilExito();
           }
-          else if(submenu1 == 4){
+          else if (submenu1 == 4) {
             //Construir EmpleadorTemporal y subir perfil a Documentos
             EmpleadorTemporal EmpleadorTemporal = new EmpleadorTemporal(user);
             docs.AddEmpleadorTemporal(EmpleadorTemporal);
             v.PerfilExito();
           }
-          else if(submenu1 == 5){
+          else if (submenu1 == 5) {
             v.MensajeRegresoMenuPrincipal();
             salirSub1 = true;
-          
           }
-          else{
+          else {
             v.MensajeErrorMenu();
           }
+        }
       }
-    }
-
-      else if(opcion == 2){
+      else if (opcion == 2) {
         // Crear Trabajos temporales
         v.CrearTemp();
         String CategoriaTrabajo = v.ingresarCategoriaTrabajo();
         String DescripcionTrabajo = v.ingresarDescripcion();
         int Sueldo = v.ingresarSueldo();
-        TrabajoTemp TrabajoTemp = new TrabajoTemp( user, CategoriaTrabajo, DescripcionTrabajo, Sueldo );
-        docs.AddTrabajoTemp(TrabajoTemp);
+        TrabajoTemp TrabajosTempo = new TrabajoTemp( user, CategoriaTrabajo, DescripcionTrabajo, Sueldo );
+        docs.AddTrabajoTemp(TrabajosTempo);
       }
-      else if(opcion == 3){
+      else if (opcion == 3) {
         boolean submenu3 = false;
-        while(submenu3 == false){
+        while (submenu3 == false) {
           int buscarTrabajos = v.submenu2();
           if(buscarTrabajos == 1){
             //Trabajo Temporal
-            v.enlistarCategoriasTrabajo(docs);
+            int seleccion = v.enlistarCategoriasTrabajo(docs) + 1;
+            ArrayList<TrabajoTemp> lista = docs.getTrabajoTemp();
+            TrabajoTemp TrabajitoTemporal = lista.get(seleccion);
+            TrabajitoTemporal.agregarAplicante(user);
           }
-          else if(buscarTrabajos == 2){
+          else if (buscarTrabajos == 2) {
             //Salir al menú principal
             submenu3 = true;
           }
@@ -185,33 +184,31 @@ public class Controlador {
         }
         
       }
-      else if(opcion == 4){
+      else if (opcion == 4) {
         boolean salirsub4 = false;
-        while(salirsub4 == false){
+        while (salirsub4 == false) {
           int opc4 = v.Consejos(); //  
-          if(opc4 == 1){
+          if (opc4 == 1) {
             v.ConsejosCrisis();
           }
-          else if(opc4 == 2){
+          else if (opc4 == 2) {
             v.ConsejosRestruc();
           }
-          else if(opc4 == 3){
+          else if (opc4 == 3) {
             v.ConsejosAntiS();
           }
-          else if(opc4 == 4){
+          else if (opc4 == 4) {
             v.ConsejosAyuda();
           }
-          else if(opc4 == 5){
+          else if (opc4 == 5) {
             salirsub4 = true;
           }
-          else{
+          else {
             v.MensajeErrorMenu();
           }
-        }
-         
-        
+        }   
       }
-      else if(opcion == 5){
+      else if (opcion == 5) {
         v.MensajeDespedida();
         salir = true;
       }
